@@ -1,5 +1,5 @@
 # 简介  
-本仓库为本人初学python的项目练习  
+本仓库用于本人初学python的项目练习  
 # 目录  
 ## simple  
 ### 1 猜字游戏  
@@ -16,3 +16,30 @@
 >使用Python中的DateTime模块来创建闹钟，并用Python中的subprocess库调用操作系统的音频播放器播放闹钟声音。
 > 
 >**项目来源**：https://blog.csdn.net/pdcfighting/article/details/125669955
+
+### 3 骰子模拟器
+>#### 文件名：Dice.py
+> #### 简介
+> 可以通过选择1到6之间的随机整数，来完成骰子模拟
+> 
+> **项目来源**：https://blog.csdn.net/pdcfighting/article/details/125669955
+
+### 4 二维码
+>#### 文件名：QRCode.py
+> #### 简介
+> 二维码是用于将数据编码和解码为机器可读的方法。 
+> 包含一个白色背景上的黑色方块网格，可以被任何成像设备(如手机)读取，并进行处理以从图案中提取所需的数据。
+> 
+>本程序使用pyqrcode库生成二维码
+> pyqrcode库说明：https://blog.csdn.net/lb245557472/article/details/91042892
+> 
+> **项目来源**：https://blog.csdn.net/pdcfighting/article/details/125669955
+
+### 5 语言检测
+>#### 文件名：LanguageCheck.py
+> #### 简介
+> 当你需要处理包含不同语言数据，且数据非常大的时候，语言检测就派上用场了。 
+> 使用Python中的langdetect包，可以在几行代码内检测超过55种不同的语言。
+langdetect包简介：https://blog.csdn.net/quiet_girl/article/details/79653037
+> 
+> **项目来源**：https://blog.csdn.net/pdcfighting/article/details/125669955
