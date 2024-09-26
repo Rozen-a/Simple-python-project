@@ -1,4 +1,4 @@
-# URL缩短
+# URL缩短器
 # 短网址由于易于记忆和输入，因此在数字营销领域非常受欢迎。
 # 这里给大家介绍一下，如何使用Python创建URL缩短器。
 
@@ -33,16 +33,55 @@ except ImportError:
 import sys
 
 
+# 缩短URL
 def make_tiny(url):
+    # 构造 TinyURL 请求 URL
+    # urlencode 是一个函数，用于将字典或元组形式的参数编码成 URL 查询字符串。
+    # 例如，如果传入的 url 是 https://example.com, 它将被编码为 url=https%3A%2F%2Fexample.com。
+    # http://tinyurl.com/api-create.php? 是 TinyURL API 的请求地址。
+    # 'url=' + url表示将长网址作为查询参数传递给TinyURL API服务器。
+    # 整体拼接生成的 requests_url 可能类似于：
+    # http://tinyurl.com/api-create.php?url=https%3A%2F%2Fexample.com
     requests_url = ('http://tinyurl.com/api-create.php?' + urlencode({'url': url}))
+
+    # 发送 HTTP 请求并读取响应
+    # urlopen 是一个用于发送 HTTP 请求并获取服务器响应的函数。这里，它向 requests_url 发送请求并返回一个响应对象。
+    # contextlib.closing() 是一个上下文管理器，确保当 urlopen 返回的响应对象不再需要时，它会自动关闭，以释放系统资源。
+    # response 是服务器返回的响应对象，包含了缩短后的 URL 等信息
     with contextlib.closing(urlopen(requests_url)) as response:
+        # response.read()：从服务器的响应中读取内容，通常是一个字节流。
+        # decode('utf-8')：服务器返回的内容是字节流，需要用 UTF-8 编码将其转换为字符串。
+        # TinyURL API 返回的内容就是缩短后的 URL。
         return response.read().decode('utf-8')
 
 
 def main():
-    for tinyurl in map(make_tiny, ['https://baijiahao.baidu.com/s?id=1719379508156841662']):
+    initial_url = []  # 待处理URL列表
+
+    # 获取待处理URL
+    print("请输入需缩短的URL(一行输入一个,输入'#'完成输入)")
+    while True:
+        input_url = input()
+        if input_url == '#':
+            break
+        else:
+            initial_url.append(input_url)
+
+    print("处理中...\n")
+
+    # map() 是一个内建函数，用于将 make_tiny 函数应用到列表中的每个元素。
+    tinyurl_list = list(map(make_tiny, initial_url))
+    print("\n---处理完成---")
+
+    print("\nURL缩短结果：")
+    # 遍历输出结果
+    for tinyurl in tinyurl_list:
         print(tinyurl)
 
 
+# 确保当脚本作为主程序运行时才会调用 main() 函数。如果该脚本被当作模块导入到其他程序中，则不会执行 main() 函数。
+# 每个Python文件（不管是被执行的脚本还是被导入的模块）都有一个内置的__name__属性。
+# 当文件被直接执行时，__name__的值会被设置为'__main__'，而当文件被导入到其他文件时，__name__的值则会被设置为文件的名字。
+# https://blog.csdn.net/weixin_72959097/article/details/137581451
 if __name__ == '__main__':
     main()

@@ -45,11 +45,19 @@ langdetect包简介：https://blog.csdn.net/quiet_girl/article/details/79653037
 > **项目来源**：https://blog.csdn.net/pdcfighting/article/details/125669955
 
 ### 6 加密和解密
->#### 文件名：encipher.py
+>#### 文件名：Encipher.py
 > #### 简介
 > 密码术意味着更改消息的文本，以便不知道你秘密的人永远不会理解你的消息。 
 > 下面创建一个GUI应用程序，使用Python进行加密和解密。
 > Tkinter是Python的标准GUI库，Python使用Tkinter可以快速创建GUI应用程序
 > 在这里，我们需要编写使用无限循环的代码，代码将不断询问用户是否要加密或解密消息。
+> 
+> **项目来源**：https://blog.csdn.net/pdcfighting/article/details/125669955
+
+### 7 URL缩短器
+>#### 文件名：ShortenURL.py
+> #### 简介
+> 使用Python创建URL缩短器
+> 使用到了urllib.parse 和 urllib.request 模块中的 urlencode 和 urlopen
 > 
 > **项目来源**：https://blog.csdn.net/pdcfighting/article/details/125669955
